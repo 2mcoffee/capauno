@@ -14,3 +14,4 @@ Changelog v1.5:
 * Actualización proceso de carga de datos
 * Actualización proceso de mantenimiento de datos
 * Corrección de errores
+* Creación de repositorio en Github
