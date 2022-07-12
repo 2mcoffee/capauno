@@ -1,0 +1,16 @@
+Changelog v1.5:
+
+* Nuevo logo
+* Nuevo modulo de ajustes
+	- Nuevo tema oscuro
+* Nuevo modulo de Empleos
+	- Búsqueda de altas y bajas laborales
+* Nuevo modulo de Colegio
+	- Búsqueda de historial de estudios primarios y secundarios
+* Nuevo modulo de recuperación de clave personal
+* Bootstrap icons actualizados a versión 1.8.2
+	- Nuevos iconos en menú principal
+* Bootstrap actualizado a versión 4.6.1
+* Actualización proceso de carga de datos
+* Actualización proceso de mantenimiento de datos
+* Corrección de errores
