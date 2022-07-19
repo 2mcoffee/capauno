@@ -36,7 +36,13 @@ require_once('./include/navbar.php');
 			<div class="col-sm-3 mb-1">
 				<span><small><strong>Fecha Ingreso</strong></small></span>
 				<br>
-				<?php echo date("d-m-Y",strtotime(utf8_encode($row["Ingreso"]))). "\n"; ?>
+				<?php 
+					if(is_null($row["Ingreso"])) {
+						echo ''. "\n";
+					} else {
+						echo date("d/m/Y",strtotime(utf8_encode($row["Ingreso"]))). "\n"; 
+					}
+				?>
 			</div>
 			<div class="col-sm-3 mb-1">
 				<span><small><strong>Origen</strong></small></span>
@@ -95,7 +101,7 @@ require_once('./include/navbar.php');
 						echo '						<td>Baja <i class="bi bi-arrow-down-short"></td>' . "\n";
 						
 					}
-					echo '						<td>' . date("d-m-Y",strtotime(utf8_encode($row["Fecha"]))). '</td>' . "\n";
+					echo '						<td>' . date("d/m/Y",strtotime(utf8_encode($row["Fecha"]))). '</td>' . "\n";
 					echo '						<td>' . utf8_encode($row["Empleo"]). '</td>' . "\n";
 					echo '						<td>' . utf8_encode($row["Solicito"]). '</td>' . "\n";
 					echo '						<td>' . utf8_encode($row["Dispuso"]). '</td>' . "\n";

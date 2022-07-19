@@ -4,8 +4,22 @@ require_once('./include/header.php');
 require_once('./include/navbar.php');
 ?>
 	<div class="container">
+		<?php
+			require_once('./model/welcome-data.php');
+
+			while($row = mysqli_fetch_array($update_results)) {
+        ?>
+		<div class="alert alert-primary alert-dismissible fade show" role="alert">
+			<strong><i class="bi bi-info-circle"></i> Información:</strong> La última actualización de la base de datos se realizó el día <?php echo  date("d/m/Y H:m:s",strtotime(utf8_encode($row["Fecha"]))) ?>.
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+		<?php
+			}
+		?>
 		<div class="w-90 mb-4 p-2">
-			<h1 class="display-5">¡Hola <?php echo $login_user; ?>!</h1>
+			<h1 class="display-5">¡Hola <?php echo $login_nombre; ?>!</h1>
 			<p class="lead">Te damos la bienvenida. Con increíble facilidad, y desde un único punto, podrás administrar todas las tareas diarias y  planificar a futuro la gestión, ahorrando tiempo y esfuerzo.</p>
 		</div>
 		<div class="card-deck mb-4">
@@ -81,6 +95,7 @@ require_once('./include/navbar.php');
 	</div>
 <?php
 require_once('./include/settings.php');
+require_once('./config/close-db.php');
 require_once('./include/copyright.php');
 require_once('./include/footer.php');
 ?>

@@ -1,3 +1,10 @@
+Changelog v1.6:
+
+* Fecha de actualizacion de base de datos en inicio
+* Personalización de nombre de usuarios en inicio
+* Bootstrap icons actualizados a versión 1.9.1
+* Corrección de errores
+
 Changelog v1.5:
 
 * Nuevo logo
@@ -7,11 +14,13 @@ Changelog v1.5:
 	- Búsqueda de altas y bajas laborales
 * Nuevo modulo de Colegio
 	- Búsqueda de historial de estudios primarios y secundarios
-* Nuevo modulo de recuperación de clave personal
 * Bootstrap icons actualizados a versión 1.8.2
-	- Nuevos iconos en menú principal
 * Bootstrap actualizado a versión 4.6.1
 * Actualización proceso de carga de datos
 * Actualización proceso de mantenimiento de datos
 * Corrección de errores
-* Creación de repositorio en Github
+
+En desarrollo:
+* Nuevo modulo de recuperación de clave personal
+* Modificacion modulo de Colegio
+	- Búsqueda de historial de estudios universitarios y terciarios
