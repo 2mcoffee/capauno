@@ -54,6 +54,23 @@
     
     $university_results = mysqli_query($conn,$university_sql);
 	
+	$technical_sql = "SELECT n.Nivel,
+						t.Carrera,
+						t.Ciclo,
+						t.Inicio,
+						t.Fin,
+						t.Motivo,
+						t.Activo
+					FROM cu_intra_terciario t
+					INNER JOIN cu_intra_busquedaestudios e
+						ON t.Nombre = e.Nombre
+					INNER JOIN cu_intra_niveleseducativos n
+						ON t.IdNivelEducativo = n.Id
+                    WHERE e.Id =".$id."
+					ORDER BY t.Inicio ASC;";
+    
+    $technical_results = mysqli_query($conn,$technical_sql);
+	
     $user_sql = "SELECT 
         e.Nombre,
         u.Ficha

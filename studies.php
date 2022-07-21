@@ -27,7 +27,7 @@ require_once('./include/navbar.php');
         ?>
 		<br>
 		<div class="mb-4">
-			<h4>Primaria</h4>		
+			<h4>Educación Primaria:</h4>		
 			<div class="table-responsive-sm mb-4">
 				<table class="table table-sm table-hover">
 					<thead>
@@ -49,7 +49,7 @@ require_once('./include/navbar.php');
 						echo '						<td>' . utf8_encode($row["Nivel"]). '</td>' . "\n";
 						echo '						<td>' . utf8_encode($row["Turno"]). '</td>' . "\n";
 						echo '						<td>' . utf8_encode($row["Ciclo"]). '</td>' . "\n";
-						echo '						<td>' . utf8_encode($row["Inicio"]). '</td>' . "\n";
+						echo '						<td>' . date("d/m/Y",strtotime(utf8_encode($row["Inicio"]))). '</td>' . "\n";
 						echo '						<td>' . utf8_encode($row["Fin"]). '</td>' . "\n";
 						echo '						<td>' . utf8_encode($row["Motivo"]). '</td>' . "\n";
 						if ($row["Activo"] == 1) {
@@ -71,7 +71,7 @@ require_once('./include/navbar.php');
 		</div>
 		<br>
 		<div class="mb-4">
-			<h4>Secundaria y Técnica</h4>		
+			<h4>Educación Secundaria:</h4>		
 			<div class="table-responsive-sm mb-4">
 				<table class="table table-sm table-hover">
 					<thead>
@@ -93,7 +93,7 @@ require_once('./include/navbar.php');
 						echo '						<td>' . utf8_encode($row["Nivel"]). '</td>' . "\n";
 						echo '						<td>' . utf8_encode($row["Turno"]). '</td>' . "\n";
 						echo '						<td>' . utf8_encode($row["Grado"]). '</td>' . "\n";
-						echo '						<td>' . utf8_encode($row["Inicio"]). '</td>' . "\n";
+						echo '						<td>' . date("d/m/Y",strtotime(utf8_encode($row["Inicio"]))). '</td>' . "\n";
 						echo '						<td>' . utf8_encode($row["Fin"]). '</td>' . "\n";
 						echo '						<td>' . utf8_encode($row["Motivo"]). '</td>' . "\n";
 						if ($row["Activo"] == 1) {
@@ -114,8 +114,52 @@ require_once('./include/navbar.php');
 			</div>
 		</div>
 		<br>
-		<div class="mb-2">
-			<h4>Universidad</h4>		
+		<div class="mb-4">
+			<h4>Educación Terciaria:</h4>		
+			<div class="table-responsive-sm mb-4">
+				<table class="table table-sm table-hover">
+					<thead>
+						<tr>
+							<th scope="col">Nivel</th>
+							<th scope="col">Carrera</th>
+							<th scope="col">Año</th>
+							<th scope="col">Inicio</th>
+							<th scope="col">Fin</th>
+							<th scope="col">Motivo</th>
+							<th scope="col">Estado</th>
+						</tr>
+					</thead>
+					<tbody>
+				<?php
+					while($row = mysqli_fetch_array($technical_results)) {
+						
+						echo '					</tr>' . "\n";
+						echo '						<td>' . utf8_encode($row["Nivel"]). '</td>' . "\n";
+						echo '						<td>' . utf8_encode($row["Carrera"]). '</td>' . "\n";
+						echo '						<td>' . utf8_encode($row["Ciclo"]). '</td>' . "\n";
+						echo '						<td>' . date("d/m/Y",strtotime(utf8_encode($row["Inicio"]))). '</td>' . "\n";
+						echo '						<td>' . date("d/m/Y",strtotime(utf8_encode($row["Fin"]))). '</td>' . "\n";
+						echo '						<td>' . utf8_encode($row["Motivo"]). '</td>' . "\n";
+						if ($row["Activo"] == 1) {
+						
+							echo '						<td><span class="badge badge-pill badge-success">Activo</span></td>' . "\n";
+							
+						} else {
+							
+							echo '						<td><span class="badge badge-pill badge-danger">Baja</span></td>' . "\n";
+							
+						}
+						echo '					</tr>' . "\n";
+						
+					}
+				?>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<br>
+		<div class="mb-4">
+			<h4>Educación Universitaria:</h4>		
 			<div class="table-responsive-sm mb-4">
 				<table class="table table-sm table-hover">
 					<thead>
@@ -135,7 +179,7 @@ require_once('./include/navbar.php');
 						echo '					</tr>' . "\n";
 						echo '						<td>' . utf8_encode($row["Nivel"]). '</td>' . "\n";
 						echo '						<td>' . utf8_encode($row["Carrera"]). '</td>' . "\n";
-						echo '						<td>' . utf8_encode($row["Inicio"]). '</td>' . "\n";
+						echo '						<td>' . date("d/m/Y",strtotime(utf8_encode($row["Inicio"]))). '</td>' . "\n";
 						echo '						<td>' . utf8_encode($row["Fin"]). '</td>' . "\n";
 						echo '						<td>' . utf8_encode($row["Motivo"]). '</td>' . "\n";
 						if ($row["Activo"] == 1) {

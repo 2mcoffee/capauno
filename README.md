@@ -3,6 +3,12 @@
   <a href="https://intranet.capauno.com.ar/" target="_blank" rel="noreferrer"><img src="https://intranet.capauno.com.ar/img/logo-nav-square.png" alt="Capauno"></a>
 </p>
 
+Changelog v1.6.1:
+* Modificacion modulo de Colegio
+	- Búsqueda de historial de estudios terciarios
+* Actualización proceso de carga de datos
+* Corrección de errores
+
 Changelog v1.6:
 
 * Fecha de actualizacion de base de datos en inicio
@@ -18,7 +24,7 @@ Changelog v1.5:
 * Nuevo modulo de Empleos
 	- Búsqueda de altas y bajas laborales
 * Nuevo modulo de Colegio
-	- Búsqueda de historial de estudios primarios y secundarios
+	- Búsqueda de historial de estudios primarios, secundarios y universitarios
 * Bootstrap icons actualizados a versión 1.8.2
 * Bootstrap actualizado a versión 4.6.1
 * Actualización proceso de carga de datos
@@ -27,5 +33,3 @@ Changelog v1.5:
 
 En desarrollo:
 * Nuevo modulo de recuperación de clave personal
-* Modificacion modulo de Colegio
-	- Búsqueda de historial de estudios universitarios y terciarios
