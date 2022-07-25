@@ -1,3 +1,6 @@
+Changelog v1.6.2:
+* Soporte para emojis
+
 Changelog v1.6.1:
 * Modificacion modulo de Colegio
 	- Búsqueda de historial de estudios terciarios
