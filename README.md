@@ -1,6 +1,6 @@
 # capauno
 <p align="center">
-  <a href="https://intranet.capauno.com.ar/" target="_blank" rel="noreferrer"><img src="https://intranet.capauno.com.ar/img/logo-nav-square.png" alt="Capauno"></a>
+  <a href="https://intranet.capauno.com.ar/" target="_blank" rel="noreferrer"><img src="https://intranet.capauno.com.ar/img/git-logo.png" alt="Capauno"></a>
 </p>
 
 [![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
