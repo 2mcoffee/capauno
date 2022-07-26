@@ -63,8 +63,8 @@ require_once('./include/navbar.php');
 					echo '					<tr>' . "\n";
 					echo '						<th scope="row">' .$i. '</th>' . "\n";
 					$i++;
-					echo '						<td>' . utf8_encode($row["Nombre"]). '</td>' . "\n";
-					echo '						<td>' . utf8_encode($row["Total"]). '</td>' . "\n";
+					echo '						<td>' . $row["Nombre"]. '</td>' . "\n";
+					echo '						<td>' . $row["Total"]. '</td>' . "\n";
 					echo '						<td>' . "\n";
 					if ($row["Ficha"] != NULL) {
 						echo '						<a href="./profile.php?ficha='.$row["Ficha"].'&referencia=3" class="btn btn-sm btn-outline-success" data-tooltip="tooltip" data-placement="bottom" title="Ficha">' . "\n";

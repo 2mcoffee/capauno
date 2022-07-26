@@ -20,7 +20,7 @@ require_once('./include/navbar.php');
             <a class="btn btn-outline-dark d-print-none" href="#" onclick="print()" data-tooltip="tooltip" data-placement="top" title="Imprimir"><i class="bi bi-printer"></i></a>
         </div>
         <div class="alert alert-primary mb-4" role="alert">
-            <i class="bi bi-info-circle"></i> <strong>Información:</strong> Los datos visualizados pertenecen al interno <?php echo utf8_encode($row["Nombre"]). "\n"; ?>
+            <i class="bi bi-info-circle"></i> <strong>Información:</strong> Los datos visualizados pertenecen al interno <?php echo $row["Nombre"]. "\n"; ?>
         </div>
         <?php
             }
@@ -32,27 +32,27 @@ require_once('./include/navbar.php');
 			<div class="col-sm-3 mb-1">
 				<span><small><strong>Capacitación</strong></small></span>
 				<br>
-				<?php echo utf8_encode($row["Curso"]). "\n"; ?>
+				<?php echo $row["Curso"]. "\n"; ?>
 		    </div>
             <div class="col-sm-2 mb-1">
 				<span><small><strong>Unidad</strong></small></span>
 				<br>
-                <?php echo utf8_encode($row["Unidad"]). "\n"; ?>
+                <?php echo $row["Unidad"]. "\n"; ?>
 			</div>
 			<div class="col-sm-2 mb-1">
 				<span><small><strong>Rubro</strong></small></span>
 				<br>
-				<?php echo utf8_encode($row["Categoria"]). "\n"; ?>
+				<?php echo $row["Categoria"]. "\n"; ?>
 			</div>
 			<div class="col-sm-2 mb-1">
 				<span><small><strong>Tipo</strong></small></span>
 				<br>
-				<?php echo utf8_encode($row["Tipo"]). "\n"; ?>
+				<?php echo $row["Tipo"]. "\n"; ?>
 			</div>
 			<div class="col-sm-3 mb-1">
 				<span><small><strong>Entidad</strong></small></span>
 				<br>
-				<?php echo utf8_encode($row["Entidad"]). "\n"; ?>
+				<?php echo $row["Entidad"]. "\n"; ?>
 			</div>
 		</div>
         <div class="row mb-2">
@@ -60,21 +60,21 @@ require_once('./include/navbar.php');
 				<span><small><strong>Desde</strong></small></span>
 				<br>
                 <?php
-					echo utf8_encode($row["Inicio"]). "\n";
+					echo $row["Inicio"]. "\n";
                 ?>
 		    </div>
 			<div class="col-sm-2 mb-1">
 				<span><small><strong>Hasta</strong></small></span>
 				<br>
 				<?php
-					echo utf8_encode($row["Fin"]). "\n";
+					echo $row["Fin"]. "\n";
                 ?>
 			</div>
 			<div class="col-sm-2 mb-1">
 				<span><small><strong>Año</strong></small></span>
 				<br>
 				<?php
-					echo utf8_encode($row["Ciclo"]). "\n";
+					echo $row["Ciclo"]. "\n";
                 ?>
 			</div>
             <div class="col-sm-2 mb-1">
@@ -86,7 +86,7 @@ require_once('./include/navbar.php');
 					} elseif ($row["Estado"] == 'SI') {
 						echo '<span class="badge bg-success text-white">FINALIZADO</span>'. "\n";
 					} else {
-						echo '<span class="badge bg-warning text-white">'.utf8_encode($row["Estado"]).'</span>'. "\n";
+						echo '<span class="badge bg-warning text-white">'.$row["Estado"].'</span>'. "\n";
 					}
                 ?>
 			</div>
@@ -94,7 +94,7 @@ require_once('./include/navbar.php');
 				<span><small><strong>Observaciones</strong></small></span>
 				<br>
 				<?php
-                    echo utf8_encode($row["Motivo"]). "\n";
+                    echo $row["Motivo"]. "\n";
                 ?>
 			</div>
 		</div>     

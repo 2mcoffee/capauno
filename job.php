@@ -20,18 +20,18 @@ require_once('./include/navbar.php');
             <a class="btn btn-outline-dark d-print-none" href="#" onclick="print()" data-tooltip="tooltip" data-placement="top" title="Imprimir"><i class="bi bi-printer"></i></a>
         </div>
         <div class="alert alert-primary mb-4" role="alert">
-            <i class="bi bi-info-circle"></i> <strong>Información:</strong> Los datos visualizados pertenecen al interno <?php echo utf8_encode($row["Nombre"]). "\n"; ?>
+            <i class="bi bi-info-circle"></i> <strong>Información:</strong> Los datos visualizados pertenecen al interno <?php echo $row["Nombre"]. "\n"; ?>
         </div>
         <div class="row mx-auto mb-4 border rounded">
 			<div class="col-sm-3 mb-1">
 				<span><small><strong>Interno</strong></small></span>
 				<br>
-				<?php echo utf8_encode($row["Nombre"]). "\n"; ?>
+				<?php echo $row["Nombre"]. "\n"; ?>
 		    </div>
             <div class="col-sm-3 mb-1">
 				<span><small><strong>Ficha</strong></small></span>
 				<br>
-                <?php echo utf8_encode($row["Ficha"]). "\n"; ?>
+                <?php echo $row["Ficha"]. "\n"; ?>
 			</div>
 			<div class="col-sm-3 mb-1">
 				<span><small><strong>Fecha Ingreso</strong></small></span>
@@ -40,14 +40,14 @@ require_once('./include/navbar.php');
 					if(is_null($row["Ingreso"])) {
 						echo ''. "\n";
 					} else {
-						echo date("d/m/Y",strtotime(utf8_encode($row["Ingreso"]))). "\n"; 
+						echo date("d/m/Y",strtotime($row["Ingreso"])). "\n"; 
 					}
 				?>
 			</div>
 			<div class="col-sm-3 mb-1">
 				<span><small><strong>Origen</strong></small></span>
 				<br>
-				<?php echo utf8_encode($row["Origen"]). "\n"; ?>
+				<?php echo $row["Origen"]. "\n"; ?>
 			</div>
 		</div>
 		<?php
@@ -101,11 +101,11 @@ require_once('./include/navbar.php');
 						echo '						<td>Baja <i class="bi bi-arrow-down-short"></td>' . "\n";
 						
 					}
-					echo '						<td>' . date("d/m/Y",strtotime(utf8_encode($row["Fecha"]))). '</td>' . "\n";
-					echo '						<td>' . utf8_encode($row["Empleo"]). '</td>' . "\n";
-					echo '						<td>' . utf8_encode($row["Solicito"]). '</td>' . "\n";
-					echo '						<td>' . utf8_encode($row["Dispuso"]). '</td>' . "\n";
-					echo '						<td>' . utf8_encode($row["Motivo"]). '</td>' . "\n";
+					echo '						<td>' . date("d/m/Y",strtotime($row["Fecha"])). '</td>' . "\n";
+					echo '						<td>' . $row["Empleo"]. '</td>' . "\n";
+					echo '						<td>' . $row["Solicito"]. '</td>' . "\n";
+					echo '						<td>' . $row["Dispuso"]. '</td>' . "\n";
+					echo '						<td>' . $row["Motivo"]. '</td>' . "\n";
 					echo '					</tr>' . "\n";
 				}
 			?>

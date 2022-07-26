@@ -65,9 +65,9 @@ require_once('./include/navbar.php');
 					echo '					<tr>' . "\n";
 					echo '						<th scope="row">' .$i. '</th>' . "\n";
 					$i++;
-					echo '						<td>' . utf8_encode($row["Nombre"]). '</td>' . "\n";
-					echo '						<td>' . utf8_encode($row["Ficha"]). '</td>' . "\n";
-					echo '						<td>' . utf8_encode($row["Pabellon"]). '</td>' . "\n";
+					echo '						<td>' . $row["Nombre"]. '</td>' . "\n";
+					echo '						<td>' . $row["Ficha"]. '</td>' . "\n";
+					echo '						<td>' . $row["Pabellon"]. '</td>' . "\n";
 					//echo '						<td>' . "\n";
 					//if ($row["Active"] == 1) {
 					//	echo '						<span class="badge bg-success text-white">Activo</span>'. "\n";
@@ -77,7 +77,7 @@ require_once('./include/navbar.php');
 					//echo '						</td>' . "\n";
 					echo '						<td>' . "\n";
 					if ($row["Ficha"] != NULL) {
-						echo '						<a href="./profile.php?ficha='.utf8_encode($row["Ficha"]).'&nombre='.utf8_encode($row["Nombre"]).'&referencia=0" class="btn btn-sm btn-outline-primary" data-tooltip="tooltip" data-placement="bottom" title="Ficha">' . "\n";
+						echo '						<a href="./profile.php?ficha='.$row["Ficha"].'&nombre='.$row["Nombre"].'&referencia=0" class="btn btn-sm btn-outline-primary" data-tooltip="tooltip" data-placement="bottom" title="Ficha">' . "\n";
 						echo '							<i class="bi bi-person"></i>' . "\n";
 						echo '						</a>' . "\n";
 					} else {

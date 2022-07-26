@@ -20,7 +20,7 @@ require_once('./include/navbar.php');
             <a class="btn btn-outline-dark d-print-none" href="#" onclick="print()" data-tooltip="tooltip" data-placement="top" title="Imprimir"><i class="bi bi-printer"></i></a>
         </div>
         <div class="alert alert-primary mb-4" role="alert">
-            <i class="bi bi-info-circle"></i> <strong>Información:</strong> Los datos visualizados pertenecen al interno <?php echo utf8_encode($row["Nombre"]). "\n"; ?>
+            <i class="bi bi-info-circle"></i> <strong>Información:</strong> Los datos visualizados pertenecen al interno <?php echo $row["Nombre"]. "\n"; ?>
         </div>
 		<?php
             }
@@ -46,12 +46,12 @@ require_once('./include/navbar.php');
 					while($row = mysqli_fetch_array($school_results)) {
 						
 						echo '					</tr>' . "\n";
-						echo '						<td>' . utf8_encode($row["Nivel"]). '</td>' . "\n";
-						echo '						<td>' . utf8_encode($row["Turno"]). '</td>' . "\n";
-						echo '						<td>' . utf8_encode($row["Ciclo"]). '</td>' . "\n";
-						echo '						<td>' . date("d/m/Y",strtotime(utf8_encode($row["Inicio"]))). '</td>' . "\n";
-						echo '						<td>' . utf8_encode($row["Fin"]). '</td>' . "\n";
-						echo '						<td>' . utf8_encode($row["Motivo"]). '</td>' . "\n";
+						echo '						<td>' . $row["Nivel"]. '</td>' . "\n";
+						echo '						<td>' . $row["Turno"]. '</td>' . "\n";
+						echo '						<td>' . $row["Ciclo"]. '</td>' . "\n";
+						echo '						<td>' . date("d/m/Y",strtotime($row["Inicio"])). '</td>' . "\n";
+						echo '						<td>' . $row["Fin"]. '</td>' . "\n";
+						echo '						<td>' . $row["Motivo"]. '</td>' . "\n";
 						if ($row["Activo"] == 1) {
 						
 							echo '						<td><span class="badge badge-pill badge-success">Activo</span></td>' . "\n";
@@ -90,12 +90,12 @@ require_once('./include/navbar.php');
 					while($row = mysqli_fetch_array($highschool_results)) {
 						
 						echo '					</tr>' . "\n";
-						echo '						<td>' . utf8_encode($row["Nivel"]). '</td>' . "\n";
-						echo '						<td>' . utf8_encode($row["Turno"]). '</td>' . "\n";
-						echo '						<td>' . utf8_encode($row["Grado"]). '</td>' . "\n";
-						echo '						<td>' . date("d/m/Y",strtotime(utf8_encode($row["Inicio"]))). '</td>' . "\n";
-						echo '						<td>' . utf8_encode($row["Fin"]). '</td>' . "\n";
-						echo '						<td>' . utf8_encode($row["Motivo"]). '</td>' . "\n";
+						echo '						<td>' . $row["Nivel"]. '</td>' . "\n";
+						echo '						<td>' . $row["Turno"]. '</td>' . "\n";
+						echo '						<td>' . $row["Grado"]. '</td>' . "\n";
+						echo '						<td>' . date("d/m/Y",strtotime($row["Inicio"])). '</td>' . "\n";
+						echo '						<td>' . $row["Fin"]. '</td>' . "\n";
+						echo '						<td>' . $row["Motivo"]. '</td>' . "\n";
 						if ($row["Activo"] == 1) {
 						
 							echo '						<td><span class="badge badge-pill badge-success">Activo</span></td>' . "\n";
@@ -134,12 +134,16 @@ require_once('./include/navbar.php');
 					while($row = mysqli_fetch_array($technical_results)) {
 						
 						echo '					</tr>' . "\n";
-						echo '						<td>' . utf8_encode($row["Nivel"]). '</td>' . "\n";
-						echo '						<td>' . utf8_encode($row["Carrera"]). '</td>' . "\n";
-						echo '						<td>' . utf8_encode($row["Ciclo"]). '</td>' . "\n";
-						echo '						<td>' . date("d/m/Y",strtotime(utf8_encode($row["Inicio"]))). '</td>' . "\n";
-						echo '						<td>' . date("d/m/Y",strtotime(utf8_encode($row["Fin"]))). '</td>' . "\n";
-						echo '						<td>' . utf8_encode($row["Motivo"]). '</td>' . "\n";
+						echo '						<td>' . $row["Nivel"]. '</td>' . "\n";
+						echo '						<td>' . $row["Carrera"]. '</td>' . "\n";
+						echo '						<td>' . $row["Ciclo"]. '</td>' . "\n";
+						echo '						<td>' . date("d/m/Y",strtotime($row["Inicio"])). '</td>' . "\n";
+						if(is_null($row["Fin"])) {
+							echo '<td></td>'. "\n";
+						} else {
+							echo '						<td>'.date("d/m/Y",strtotime(utf8_encode($row["Fin"]))).'</td>'. "\n"; 
+						}
+						echo '						<td>' . $row["Motivo"]. '</td>' . "\n";
 						if ($row["Activo"] == 1) {
 						
 							echo '						<td><span class="badge badge-pill badge-success">Activo</span></td>' . "\n";
@@ -177,11 +181,11 @@ require_once('./include/navbar.php');
 					while($row = mysqli_fetch_array($university_results)) {
 						
 						echo '					</tr>' . "\n";
-						echo '						<td>' . utf8_encode($row["Nivel"]). '</td>' . "\n";
-						echo '						<td>' . utf8_encode($row["Carrera"]). '</td>' . "\n";
-						echo '						<td>' . date("d/m/Y",strtotime(utf8_encode($row["Inicio"]))). '</td>' . "\n";
-						echo '						<td>' . utf8_encode($row["Fin"]). '</td>' . "\n";
-						echo '						<td>' . utf8_encode($row["Motivo"]). '</td>' . "\n";
+						echo '						<td>' . $row["Nivel"]. '</td>' . "\n";
+						echo '						<td>' . $row["Carrera"]. '</td>' . "\n";
+						echo '						<td>' . date("d/m/Y",strtotime($row["Inicio"])). '</td>' . "\n";
+						echo '						<td>' . $row["Fin"]. '</td>' . "\n";
+						echo '						<td>' . $row["Motivo"]. '</td>' . "\n";
 						if ($row["Activo"] == 1) {
 						
 							echo '						<td><span class="badge badge-pill badge-success">Activo</span></td>' . "\n";
