@@ -3,7 +3,7 @@
    require_once('./include/header.php');
 ?>
 	<div class="container signin text-center">
-		<div class="box-signin shadow rounded p-4 mb-4">
+		<div class="box-signin shadow-sm rounded p-4 mb-4">
 			<form action ="" method ="post" class="form-signin">
 				<div class="mb-4">
 					<img class="img-fluid unselectable" src="./img/logo-nav-square.png" alt="intranet">

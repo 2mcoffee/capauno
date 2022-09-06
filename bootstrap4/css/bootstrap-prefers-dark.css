@@ -4463,7 +4463,7 @@
   button.bg-danger:focus {
     background-color: #bd2130 !important; }
   .bg-light, .bg-themed-inverted {
-    background-color: #f8f9fa !important; }
+    background-color: #343A40 !important; }
   a.bg-light:hover, a.bg-themed-inverted:hover, a.bg-light:focus, a.bg-themed-inverted:focus,
   button.bg-light:hover,
   button.bg-themed-inverted:hover,

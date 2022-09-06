@@ -31,7 +31,7 @@
     };
 	
 
-    $no_of_records_per_page = 100;
+    $no_of_records_per_page = 50;
     $offset = ($page-1) * $no_of_records_per_page;
 
     $total_pages_sql = "SELECT

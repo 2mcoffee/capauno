@@ -56,3 +56,47 @@ img {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
+.jumbotron {
+  background: none !important;
+}
+.border-4 {
+  border-width:4px !important;
+}
+.icon-holder {
+  display:inline-block;
+  background:#e6f0fe;
+  color:#0d6efd;
+  width:36px;
+  height:36px;
+  padding-top:6px;
+  text-align:center;
+  border-radius:50%;
+}
+.icon-holder-h3 {
+  display:inline-block;
+  background:#e6f0fe;
+  color:#0d6efd;
+  width:45px;
+  height:45px;
+  padding-top:4px;
+  text-align:center;
+  border-radius:50%;
+}
+.icon-text-small {
+  font-size: 16px !important;
+}
+.h-250 {
+  max-height: 250px !important;
+}
+.h-150 {
+  min-height: 150px !important;
+  height: auto !important;
+}
+.h-120 {
+  min-height: 120px !important;
+  height: auto !important;
+}
+.app-card-notification .notification-type .badge {
+  font-size:.65rem;
+  text-transform:uppercase
+}

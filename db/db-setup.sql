@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 25-07-2022 a las 17:43:14
--- Versión del servidor: 10.1.38-MariaDB
--- Versión de PHP: 7.3.2
+-- Host: 127.0.0.1
+-- Generation Time: Sep 06, 2022 at 02:54 PM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -19,14 +18,16 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `capauno`
+-- Database: `capauno`
 --
+CREATE DATABASE IF NOT EXISTS `capauno` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+USE `capauno`;
 
 DELIMITER $$
 --
--- Procedimientos
+-- Procedures
 --
-CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_colegio_nombre` ()  BEGIN
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_colegio_nombre` ()   BEGIN
 
 UPDATE cu_intra_colegio
 SET Nombre = REPLACE(Nombre,'"','')
@@ -123,7 +124,7 @@ SET Nombre = UPPER(Nombre), Turno =  UPPER(Turno), Grado = UPPER(Grado), Motivo 
 
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_cursos_nombre` ()  BEGIN
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_cursos_nombre` ()   BEGIN
 
 UPDATE cu_intra_cursos SET Nombre = REPLACE(Nombre,'Š','S');
 UPDATE cu_intra_cursos SET Nombre = REPLACE(Nombre,'š','s');
@@ -211,7 +212,7 @@ UPDATE cu_intra_cursos SET Nombre = UPPER(Nombre);
 
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_empleos_nombre` ()  BEGIN
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_empleos_nombre` ()   BEGIN
 
 UPDATE cu_intra_empleos
 SET Nombre = REPLACE(Nombre,'"','')
@@ -307,7 +308,7 @@ UPDATE cu_intra_empleos SET Nombre = UPPER(Nombre);
 
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_internos_nombre` ()  BEGIN
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_internos_nombre` ()   BEGIN
 
 UPDATE cu_intra_internos
 SET Nombre = REPLACE(Nombre,'"','')
@@ -403,7 +404,7 @@ UPDATE cu_intra_internos SET Nombre = UPPER(Nombre);
 
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_talleres_nombre` ()  BEGIN
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_talleres_nombre` ()   BEGIN
 
 UPDATE cu_intra_talleres
 SET Nombre = REPLACE(Nombre,'"','')
@@ -497,7 +498,7 @@ UPDATE cu_intra_talleres SET Nombre = REPLACE(Nombre,'Ů','U');
 
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_universidad_nombre` ()  BEGIN
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_universidad_nombre` ()   BEGIN
 
 UPDATE cu_intra_universidad
 SET Nombre = REPLACE(Nombre,'"','')
@@ -599,20 +600,20 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `cu_actualizaciones`
+-- Table structure for table `cu_actualizaciones`
 --
 
 CREATE TABLE `cu_actualizaciones` (
   `Id` int(11) NOT NULL,
   `Modulo` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `Version` int(11) NOT NULL,
-  `Fecha` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `Fecha` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `cu_cursos`
+-- Table structure for table `cu_cursos`
 --
 
 CREATE TABLE `cu_cursos` (
@@ -624,8 +625,8 @@ CREATE TABLE `cu_cursos` (
   `Inicio` date NOT NULL,
   `Fin` date DEFAULT NULL,
   `Docente` varchar(250) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `Cupos` int(11) NOT NULL DEFAULT '0',
-  `Vacantes` int(11) NOT NULL DEFAULT '0',
+  `Cupos` int(11) NOT NULL DEFAULT 0,
+  `Vacantes` int(11) NOT NULL DEFAULT 0,
   `Interno` bit(1) NOT NULL DEFAULT b'0',
   `Habilitado` bit(1) NOT NULL DEFAULT b'1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -633,7 +634,7 @@ CREATE TABLE `cu_cursos` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `cu_inscripciones`
+-- Table structure for table `cu_inscripciones`
 --
 
 CREATE TABLE `cu_inscripciones` (
@@ -650,61 +651,61 @@ CREATE TABLE `cu_inscripciones` (
   `Ciclo` int(11) NOT NULL,
   `Codigo` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
   `Elegido` bit(1) NOT NULL DEFAULT b'0',
-  `Registro` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `Registro` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `cu_intra_busquedacursos`
+-- Table structure for table `cu_intra_busquedacursos`
 --
 
 CREATE TABLE `cu_intra_busquedacursos` (
   `Id` int(11) NOT NULL,
   `Nombre` varchar(250) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `Creado` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `Creado` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `cu_intra_busquedaempleos`
+-- Table structure for table `cu_intra_busquedaempleos`
 --
 
 CREATE TABLE `cu_intra_busquedaempleos` (
   `Id` int(11) NOT NULL,
   `Nombre` varchar(250) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `Creado` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `Creado` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `cu_intra_busquedaestudios`
+-- Table structure for table `cu_intra_busquedaestudios`
 --
 
 CREATE TABLE `cu_intra_busquedaestudios` (
   `Id` int(11) NOT NULL,
   `Nombre` varchar(250) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `Creado` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `Creado` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `cu_intra_busquedatalleres`
+-- Table structure for table `cu_intra_busquedatalleres`
 --
 
 CREATE TABLE `cu_intra_busquedatalleres` (
   `Id` int(11) NOT NULL,
   `Nombre` varchar(250) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `Creado` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `Creado` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `cu_intra_colegio`
+-- Table structure for table `cu_intra_colegio`
 --
 
 CREATE TABLE `cu_intra_colegio` (
@@ -725,7 +726,7 @@ CREATE TABLE `cu_intra_colegio` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `cu_intra_cursos`
+-- Table structure for table `cu_intra_cursos`
 --
 
 CREATE TABLE `cu_intra_cursos` (
@@ -746,7 +747,7 @@ CREATE TABLE `cu_intra_cursos` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `cu_intra_empleos`
+-- Table structure for table `cu_intra_empleos`
 --
 
 CREATE TABLE `cu_intra_empleos` (
@@ -763,7 +764,7 @@ CREATE TABLE `cu_intra_empleos` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `cu_intra_internos`
+-- Table structure for table `cu_intra_internos`
 --
 
 CREATE TABLE `cu_intra_internos` (
@@ -801,24 +802,24 @@ CREATE TABLE `cu_intra_internos` (
   `Situacion` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `Condena` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `Reincidencia` varchar(25) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `Creado` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `Creado` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `cu_intra_niveleseducativos`
+-- Table structure for table `cu_intra_niveleseducativos`
 --
 
 CREATE TABLE `cu_intra_niveleseducativos` (
   `Id` int(11) NOT NULL,
   `Nivel` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `Activo` bit(1) NOT NULL DEFAULT b'1',
-  `Creado` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `Creado` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Volcado de datos para la tabla `cu_intra_niveleseducativos`
+-- Dumping data for table `cu_intra_niveleseducativos`
 --
 
 INSERT INTO `cu_intra_niveleseducativos` (`Id`, `Nivel`, `Activo`, `Creado`) VALUES
@@ -831,7 +832,24 @@ INSERT INTO `cu_intra_niveleseducativos` (`Id`, `Nivel`, `Activo`, `Creado`) VAL
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `cu_intra_talleres`
+-- Table structure for table `cu_intra_notificaciones`
+--
+
+CREATE TABLE `cu_intra_notificaciones` (
+  `Id` int(11) NOT NULL,
+  `Emisor` int(11) NOT NULL,
+  `Receptor` int(11) NOT NULL,
+  `Asunto` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `Mensaje` varchar(250) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `Fecha` timestamp NOT NULL DEFAULT current_timestamp(),
+  `Estado` int(11) NOT NULL DEFAULT 0,
+  `Sistema` bit(1) NOT NULL DEFAULT b'0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cu_intra_talleres`
 --
 
 CREATE TABLE `cu_intra_talleres` (
@@ -848,7 +866,7 @@ CREATE TABLE `cu_intra_talleres` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `cu_intra_terciario`
+-- Table structure for table `cu_intra_terciario`
 --
 
 CREATE TABLE `cu_intra_terciario` (
@@ -869,7 +887,7 @@ CREATE TABLE `cu_intra_terciario` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `cu_intra_universidad`
+-- Table structure for table `cu_intra_universidad`
 --
 
 CREATE TABLE `cu_intra_universidad` (
@@ -889,7 +907,7 @@ CREATE TABLE `cu_intra_universidad` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `cu_logins`
+-- Table structure for table `cu_logins`
 --
 
 CREATE TABLE `cu_logins` (
@@ -897,15 +915,18 @@ CREATE TABLE `cu_logins` (
   `Usuario` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
   `Clave` varchar(250) COLLATE utf8mb4_unicode_ci NOT NULL,
   `Nombre` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `IdRol` int(11) NOT NULL DEFAULT '2',
+  `Bienvenida` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `IdRol` int(11) NOT NULL DEFAULT 2,
   `Activo` bit(1) NOT NULL DEFAULT b'0',
-  `Tema` int(11) NOT NULL DEFAULT '0'
+  `Tema` int(11) NOT NULL DEFAULT 0,
+  `Mensajes` bit(1) NOT NULL DEFAULT b'0',
+  `Penitenciario` bit(1) NOT NULL DEFAULT b'1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `cu_pabellones`
+-- Table structure for table `cu_pabellones`
 --
 
 CREATE TABLE `cu_pabellones` (
@@ -916,7 +937,7 @@ CREATE TABLE `cu_pabellones` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Volcado de datos para la tabla `cu_pabellones`
+-- Dumping data for table `cu_pabellones`
 --
 
 INSERT INTO `cu_pabellones` (`Id`, `IdUnidad`, `Pabellon`, `Activo`) VALUES
@@ -996,7 +1017,7 @@ INSERT INTO `cu_pabellones` (`Id`, `IdUnidad`, `Pabellon`, `Activo`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `cu_resultados`
+-- Table structure for table `cu_resultados`
 --
 
 CREATE TABLE `cu_resultados` (
@@ -1008,7 +1029,7 @@ CREATE TABLE `cu_resultados` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `cu_roles`
+-- Table structure for table `cu_roles`
 --
 
 CREATE TABLE `cu_roles` (
@@ -1017,18 +1038,22 @@ CREATE TABLE `cu_roles` (
   `Activo` bit(1) NOT NULL DEFAULT b'1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+-- --------------------------------------------------------
+
 --
--- Volcado de datos para la tabla `cu_roles`
+-- Table structure for table `cu_stats_matriculas`
 --
 
-INSERT INTO `cu_roles` (`Id`, `Rol`, `Activo`) VALUES
-(1, 'Administrador', b'1'),
-(2, 'Interno', b'1');
+CREATE TABLE `cu_stats_matriculas` (
+  `Id` int(11) NOT NULL,
+  `Titulo` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `Valor` decimal(18,4) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `cu_unidades`
+-- Table structure for table `cu_unidades`
 --
 
 CREATE TABLE `cu_unidades` (
@@ -1038,7 +1063,7 @@ CREATE TABLE `cu_unidades` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Volcado de datos para la tabla `cu_unidades`
+-- Dumping data for table `cu_unidades`
 --
 
 INSERT INTO `cu_unidades` (`Id`, `Unidad`, `Activo`) VALUES
@@ -1101,7 +1126,7 @@ INSERT INTO `cu_unidades` (`Id`, `Unidad`, `Activo`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `cu_usuarios`
+-- Table structure for table `cu_usuarios`
 --
 
 CREATE TABLE `cu_usuarios` (
@@ -1115,30 +1140,30 @@ CREATE TABLE `cu_usuarios` (
   `CUIL` bigint(20) DEFAULT NULL,
   `Email` varchar(250) COLLATE utf8mb4_unicode_ci NOT NULL,
   `IdPabellon` int(11) DEFAULT NULL,
-  `Registro` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `Registro` timestamp NOT NULL DEFAULT current_timestamp(),
   `Habilitado` timestamp NULL DEFAULT NULL,
   `Baja` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Índices para tablas volcadas
+-- Indexes for dumped tables
 --
 
 --
--- Indices de la tabla `cu_actualizaciones`
+-- Indexes for table `cu_actualizaciones`
 --
 ALTER TABLE `cu_actualizaciones`
   ADD PRIMARY KEY (`Id`);
 
 --
--- Indices de la tabla `cu_cursos`
+-- Indexes for table `cu_cursos`
 --
 ALTER TABLE `cu_cursos`
   ADD PRIMARY KEY (`Id`),
   ADD KEY `IDX_Cursos` (`Curso`(191)) USING BTREE;
 
 --
--- Indices de la tabla `cu_inscripciones`
+-- Indexes for table `cu_inscripciones`
 --
 ALTER TABLE `cu_inscripciones`
   ADD PRIMARY KEY (`Id`),
@@ -1148,35 +1173,35 @@ ALTER TABLE `cu_inscripciones`
   ADD KEY `IDX_DNI_RESULTADO` (`DNI`);
 
 --
--- Indices de la tabla `cu_intra_busquedacursos`
+-- Indexes for table `cu_intra_busquedacursos`
 --
 ALTER TABLE `cu_intra_busquedacursos`
   ADD PRIMARY KEY (`Id`),
   ADD KEY `IDX_Search_Courses` (`Nombre`(191),`Id`);
 
 --
--- Indices de la tabla `cu_intra_busquedaempleos`
+-- Indexes for table `cu_intra_busquedaempleos`
 --
 ALTER TABLE `cu_intra_busquedaempleos`
   ADD PRIMARY KEY (`Id`),
   ADD KEY `IDX_Search_Jobs` (`Nombre`(191),`Id`);
 
 --
--- Indices de la tabla `cu_intra_busquedaestudios`
+-- Indexes for table `cu_intra_busquedaestudios`
 --
 ALTER TABLE `cu_intra_busquedaestudios`
   ADD PRIMARY KEY (`Id`),
   ADD KEY `IX_Search_Learning` (`Nombre`(191),`Id`);
 
 --
--- Indices de la tabla `cu_intra_busquedatalleres`
+-- Indexes for table `cu_intra_busquedatalleres`
 --
 ALTER TABLE `cu_intra_busquedatalleres`
   ADD PRIMARY KEY (`Id`),
   ADD KEY `IX_Search_Workshop` (`Nombre`(191),`Id`);
 
 --
--- Indices de la tabla `cu_intra_colegio`
+-- Indexes for table `cu_intra_colegio`
 --
 ALTER TABLE `cu_intra_colegio`
   ADD PRIMARY KEY (`Id`),
@@ -1184,40 +1209,48 @@ ALTER TABLE `cu_intra_colegio`
   ADD KEY `IX_Search_School` (`Nombre`(191));
 
 --
--- Indices de la tabla `cu_intra_cursos`
+-- Indexes for table `cu_intra_cursos`
 --
 ALTER TABLE `cu_intra_cursos`
   ADD PRIMARY KEY (`Id`),
   ADD KEY `IDX_Search_Courses` (`Nombre`);
 
 --
--- Indices de la tabla `cu_intra_empleos`
+-- Indexes for table `cu_intra_empleos`
 --
 ALTER TABLE `cu_intra_empleos`
   ADD PRIMARY KEY (`Id`);
 
 --
--- Indices de la tabla `cu_intra_internos`
+-- Indexes for table `cu_intra_internos`
 --
 ALTER TABLE `cu_intra_internos`
   ADD PRIMARY KEY (`Id`),
   ADD KEY `IDX_Search_Courses` (`Nombre`(191),`Ficha`);
 
 --
--- Indices de la tabla `cu_intra_niveleseducativos`
+-- Indexes for table `cu_intra_niveleseducativos`
 --
 ALTER TABLE `cu_intra_niveleseducativos`
   ADD PRIMARY KEY (`Id`);
 
 --
--- Indices de la tabla `cu_intra_talleres`
+-- Indexes for table `cu_intra_notificaciones`
+--
+ALTER TABLE `cu_intra_notificaciones`
+  ADD PRIMARY KEY (`Id`),
+  ADD KEY `Emisor` (`Emisor`),
+  ADD KEY `Receptor` (`Receptor`);
+
+--
+-- Indexes for table `cu_intra_talleres`
 --
 ALTER TABLE `cu_intra_talleres`
   ADD PRIMARY KEY (`Id`),
   ADD KEY `IX_Search_Workshop` (`Nombre`(191));
 
 --
--- Indices de la tabla `cu_intra_terciario`
+-- Indexes for table `cu_intra_terciario`
 --
 ALTER TABLE `cu_intra_terciario`
   ADD PRIMARY KEY (`Id`),
@@ -1225,7 +1258,7 @@ ALTER TABLE `cu_intra_terciario`
   ADD KEY `IX_Search_Technical` (`Nombre`(191));
 
 --
--- Indices de la tabla `cu_intra_universidad`
+-- Indexes for table `cu_intra_universidad`
 --
 ALTER TABLE `cu_intra_universidad`
   ADD PRIMARY KEY (`Id`),
@@ -1233,40 +1266,46 @@ ALTER TABLE `cu_intra_universidad`
   ADD KEY `IX_Search_University` (`Nombre`(191));
 
 --
--- Indices de la tabla `cu_logins`
+-- Indexes for table `cu_logins`
 --
 ALTER TABLE `cu_logins`
   ADD PRIMARY KEY (`Id`),
   ADD KEY `IdRol` (`IdRol`);
 
 --
--- Indices de la tabla `cu_pabellones`
+-- Indexes for table `cu_pabellones`
 --
 ALTER TABLE `cu_pabellones`
   ADD PRIMARY KEY (`Id`),
   ADD KEY `IdUnidad` (`IdUnidad`);
 
 --
--- Indices de la tabla `cu_resultados`
+-- Indexes for table `cu_resultados`
 --
 ALTER TABLE `cu_resultados`
   ADD PRIMARY KEY (`Id`),
   ADD KEY `IDX_DNI` (`DNI`);
 
 --
--- Indices de la tabla `cu_roles`
+-- Indexes for table `cu_roles`
 --
 ALTER TABLE `cu_roles`
   ADD PRIMARY KEY (`Id`);
 
 --
--- Indices de la tabla `cu_unidades`
+-- Indexes for table `cu_stats_matriculas`
+--
+ALTER TABLE `cu_stats_matriculas`
+  ADD PRIMARY KEY (`Id`);
+
+--
+-- Indexes for table `cu_unidades`
 --
 ALTER TABLE `cu_unidades`
   ADD PRIMARY KEY (`Id`);
 
 --
--- Indices de la tabla `cu_usuarios`
+-- Indexes for table `cu_usuarios`
 --
 ALTER TABLE `cu_usuarios`
   ADD PRIMARY KEY (`Id`),
@@ -1274,172 +1313,191 @@ ALTER TABLE `cu_usuarios`
   ADD KEY `cu_usuarios_ibfk_2` (`IdLogin`);
 
 --
--- AUTO_INCREMENT de las tablas volcadas
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT de la tabla `cu_actualizaciones`
+-- AUTO_INCREMENT for table `cu_actualizaciones`
 --
 ALTER TABLE `cu_actualizaciones`
   MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `cu_cursos`
+-- AUTO_INCREMENT for table `cu_cursos`
 --
 ALTER TABLE `cu_cursos`
   MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `cu_inscripciones`
+-- AUTO_INCREMENT for table `cu_inscripciones`
 --
 ALTER TABLE `cu_inscripciones`
   MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `cu_intra_busquedacursos`
+-- AUTO_INCREMENT for table `cu_intra_busquedacursos`
 --
 ALTER TABLE `cu_intra_busquedacursos`
   MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `cu_intra_busquedaempleos`
+-- AUTO_INCREMENT for table `cu_intra_busquedaempleos`
 --
 ALTER TABLE `cu_intra_busquedaempleos`
   MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `cu_intra_busquedaestudios`
+-- AUTO_INCREMENT for table `cu_intra_busquedaestudios`
 --
 ALTER TABLE `cu_intra_busquedaestudios`
   MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `cu_intra_busquedatalleres`
+-- AUTO_INCREMENT for table `cu_intra_busquedatalleres`
 --
 ALTER TABLE `cu_intra_busquedatalleres`
   MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `cu_intra_colegio`
+-- AUTO_INCREMENT for table `cu_intra_colegio`
 --
 ALTER TABLE `cu_intra_colegio`
   MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `cu_intra_cursos`
+-- AUTO_INCREMENT for table `cu_intra_cursos`
 --
 ALTER TABLE `cu_intra_cursos`
   MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `cu_intra_empleos`
+-- AUTO_INCREMENT for table `cu_intra_empleos`
 --
 ALTER TABLE `cu_intra_empleos`
   MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `cu_intra_internos`
+-- AUTO_INCREMENT for table `cu_intra_internos`
 --
 ALTER TABLE `cu_intra_internos`
   MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `cu_intra_niveleseducativos`
+-- AUTO_INCREMENT for table `cu_intra_niveleseducativos`
 --
 ALTER TABLE `cu_intra_niveleseducativos`
   MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT de la tabla `cu_intra_talleres`
+-- AUTO_INCREMENT for table `cu_intra_notificaciones`
+--
+ALTER TABLE `cu_intra_notificaciones`
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `cu_intra_talleres`
 --
 ALTER TABLE `cu_intra_talleres`
   MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `cu_intra_terciario`
+-- AUTO_INCREMENT for table `cu_intra_terciario`
 --
 ALTER TABLE `cu_intra_terciario`
   MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `cu_intra_universidad`
+-- AUTO_INCREMENT for table `cu_intra_universidad`
 --
 ALTER TABLE `cu_intra_universidad`
   MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `cu_logins`
+-- AUTO_INCREMENT for table `cu_logins`
 --
 ALTER TABLE `cu_logins`
   MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `cu_pabellones`
+-- AUTO_INCREMENT for table `cu_pabellones`
 --
 ALTER TABLE `cu_pabellones`
   MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
 
 --
--- AUTO_INCREMENT de la tabla `cu_resultados`
+-- AUTO_INCREMENT for table `cu_resultados`
 --
 ALTER TABLE `cu_resultados`
   MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `cu_unidades`
+-- AUTO_INCREMENT for table `cu_stats_matriculas`
+--
+ALTER TABLE `cu_stats_matriculas`
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `cu_unidades`
 --
 ALTER TABLE `cu_unidades`
   MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
 
 --
--- AUTO_INCREMENT de la tabla `cu_usuarios`
+-- AUTO_INCREMENT for table `cu_usuarios`
 --
 ALTER TABLE `cu_usuarios`
   MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- Restricciones para tablas volcadas
+-- Constraints for dumped tables
 --
 
 --
--- Filtros para la tabla `cu_inscripciones`
+-- Constraints for table `cu_inscripciones`
 --
 ALTER TABLE `cu_inscripciones`
   ADD CONSTRAINT `cu_inscripciones_ibfk_1` FOREIGN KEY (`IdPabellon`) REFERENCES `cu_pabellones` (`Id`),
   ADD CONSTRAINT `cu_inscripciones_ibfk_2` FOREIGN KEY (`IdCurso`) REFERENCES `cu_cursos` (`Id`);
 
 --
--- Filtros para la tabla `cu_intra_colegio`
+-- Constraints for table `cu_intra_colegio`
 --
 ALTER TABLE `cu_intra_colegio`
   ADD CONSTRAINT `cu_intra_colegio_ibfk_1` FOREIGN KEY (`IdNivelEducativo`) REFERENCES `cu_intra_niveleseducativos` (`Id`);
 
 --
--- Filtros para la tabla `cu_intra_terciario`
+-- Constraints for table `cu_intra_notificaciones`
+--
+ALTER TABLE `cu_intra_notificaciones`
+  ADD CONSTRAINT `cu_intra_notificaciones_ibfk_1` FOREIGN KEY (`Emisor`) REFERENCES `cu_logins` (`Id`),
+  ADD CONSTRAINT `cu_intra_notificaciones_ibfk_2` FOREIGN KEY (`Receptor`) REFERENCES `cu_logins` (`Id`);
+
+--
+-- Constraints for table `cu_intra_terciario`
 --
 ALTER TABLE `cu_intra_terciario`
   ADD CONSTRAINT `cu_intra_terciario_ibfk_1` FOREIGN KEY (`IdNivelEducativo`) REFERENCES `cu_intra_niveleseducativos` (`Id`);
 
 --
--- Filtros para la tabla `cu_intra_universidad`
+-- Constraints for table `cu_intra_universidad`
 --
 ALTER TABLE `cu_intra_universidad`
   ADD CONSTRAINT `cu_intra_universidad_ibfk_1` FOREIGN KEY (`IdNivelEducativo`) REFERENCES `cu_intra_niveleseducativos` (`Id`);
 
 --
--- Filtros para la tabla `cu_logins`
+-- Constraints for table `cu_logins`
 --
 ALTER TABLE `cu_logins`
   ADD CONSTRAINT `cu_logins_ibfk_1` FOREIGN KEY (`IdRol`) REFERENCES `cu_roles` (`Id`);
 
 --
--- Filtros para la tabla `cu_pabellones`
+-- Constraints for table `cu_pabellones`
 --
 ALTER TABLE `cu_pabellones`
   ADD CONSTRAINT `cu_pabellones_ibfk_1` FOREIGN KEY (`IdUnidad`) REFERENCES `cu_unidades` (`Id`);
 
 --
--- Filtros para la tabla `cu_usuarios`
+-- Constraints for table `cu_usuarios`
 --
 ALTER TABLE `cu_usuarios`
   ADD CONSTRAINT `cu_usuarios_ibfk_1` FOREIGN KEY (`IdPabellon`) REFERENCES `cu_pabellones` (`Id`),

@@ -5,6 +5,13 @@
 
 [![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
 
+Changelog v2.0:
+* Nuevo diseño
+* Nuevo modulo de mensajeria
+* Inclusión de charts.js
+* Modificacion pantalla de inicio
+	- Indicadores de progreso y estado de cursos
+
 Changelog v1.6.3:
 * Corrección de errores
 

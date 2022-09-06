@@ -14,14 +14,45 @@ require_once('./include/navbar.php');
             <a class="btn btn-outline-dark d-print-none" href="#" onclick="window.history.go(-1); return false;" data-tooltip="tooltip" data-placement="top" title="Volver"><i class="bi bi-arrow-left"></i></a>
             <?php
                 if ($row["Ficha"] != NULL) {
-                    echo '            <a class="btn btn-outline-dark d-print-none" href="./profile.php?ficha='.$row["Ficha"].'&nombre='.utf8_encode($row["Nombre"]).'&referencia=2" data-tooltip="tooltip" data-placement="top" title="Ficha"><i class="bi bi-person"></i></a>'. "\n";
+                    echo '            <a class="btn btn-outline-dark d-print-none" href="./profile.php?ficha='.$row["Ficha"].'&nombre='.$row["Nombre"].'&referencia=2" data-tooltip="tooltip" data-placement="top" title="Ficha"><i class="bi bi-person"></i></a>'. "\n";
                 }
             ?>
             <a class="btn btn-outline-dark d-print-none" href="#" onclick="print()" data-tooltip="tooltip" data-placement="top" title="Imprimir"><i class="bi bi-printer"></i></a>
         </div>
-        <div class="alert alert-primary mb-4" role="alert">
-            <i class="bi bi-info-circle"></i> <strong>Información:</strong> Los datos visualizados pertenecen a la inscripción del interno <?php echo utf8_encode($row["Nombre"]). "\n"; ?>
-        </div>
+        <div class="row mb-4">
+			<div class="col-12 col-sm-3">
+				<div class="shadow-sm rounded border-0 p-2 h-120">
+					<div class="text-center text-primary"><h1 class="mb-0"><i class="bi bi-people"></i></h1></div>
+					<p class="card-text text-center small"><?php echo $row["Nombre"]. "\n"; ?></p>
+				</div>
+			</div>
+			<div class="col-4 col-sm-3">
+				<div class="shadow-sm rounded border-0 p-2 h-120">
+					<div class="text-center text-primary"><h1 class="mb-0"><i class="bi bi-person-rolodex"></i></h1></div>
+					<p class="card-text text-center small">Ficha: <?php echo $row["Ficha"]. "\n"; ?></p>
+				</div>
+			</div>
+			<div class="col-4 col-sm-3">
+				<div class="shadow-sm rounded border-0 p-2 h-120">
+					<div class="text-center text-primary"><h1 class="mb-0"><i class="bi bi-calendar-event"></i></h1></div>
+					<p class="card-text text-center small">
+						<?php 
+							if(is_null($row["Ingreso"])) {
+								echo 'Ingreso:'. "\n";
+							} else {
+								echo 'Ingreso: '.date("d/m/y",strtotime($row["Ingreso"])). "\n"; 
+							}
+						?>
+					</p>
+				</div>
+			</div>
+			<div class="col-4 col-sm-3">
+				<div class="shadow-sm rounded border-0 p-2 h-120">
+					<div class="text-center text-primary"><h1 class="mb-0"><i class="bi bi-building"></i></h1></div>
+					<p class="card-text text-center small"><?php echo 'Origen: '.$row["Origen"]. "\n"; ?></p>
+				</div>
+			</div>
+		</div>
         <?php
             }
 
@@ -31,48 +62,48 @@ require_once('./include/navbar.php');
 			<div class="col-sm-3 mb-2">
 				<span><small><strong>Nombre</strong></small></span>
 				<br>
-				<?php echo utf8_encode($row["Nombre"]). "\n"; ?>
+				<?php echo $row["Nombre"]. "\n"; ?>
 		    </div>
             <div class="col-sm-2 mb-2">
 				<span><small><strong>Fecha Registro</strong></small></span>
 				<br>
-                <?php echo utf8_encode($row["Registro"]). "\n"; ?>
+                <?php echo $row["Registro"]. "\n"; ?>
 			</div>
 			<div class="col-sm-2 mb-2">
 				<span><small><strong>DNI</strong></small></span>
 				<br>
-				<?php echo utf8_encode($row["DNI"]). "\n"; ?>
+				<?php echo $row["DNI"]. "\n"; ?>
 			</div>
 			<div class="col-sm-2 mb-2">
 				<span><small><strong>Fecha Nacimiento</strong></small></span>
 				<br>
-				<?php echo utf8_encode($row["Nacimiento"]). "\n"; ?>
+				<?php echo $row["Nacimiento"]. "\n"; ?>
 			</div>
 			<div class="col-sm-3">
 				<span><small><strong>Email</strong></small></span>
 				<br>
-				<?php echo utf8_encode($row["Email"]). "\n"; ?>
+				<?php echo $row["Email"]. "\n"; ?>
 			</div>
 		</div>
 		<div class="row mb-2">
 			<div class="col-sm-3 mb-2">
 				<span><small><strong>Unidad</strong></small></span>
 				<br>
-				<?php echo utf8_encode($row["Unidad"]). "\n"; ?>
+				<?php echo $row["Unidad"]. "\n"; ?>
 		    </div>
             <div class="col-sm-2 mb-2">
 				<span><small><strong>Pabellon</strong></small></span>
 				<br>
-                <?php echo utf8_encode($row["Pabellon"]). "\n"; ?>
+                <?php echo $row["Pabellon"]. "\n"; ?>
 			</div>
 			<div class="col-sm-2 mb-2">
 				<span><small><strong>Trabajo</strong></small></span>
 				<br>
 				<?php 
 					if ($row["Trabajo"]==1) {
-						echo '<span class="badge bg-success text-white">Si</span>'. "\n";
+						echo '<span class="badge badge-primary">Si</span>'. "\n";
 					} else 
-						echo '<span class="badge bg-danger text-white">No</span>'. "\n";
+						echo '<span class="badge badge-primary">No</span>'. "\n";
 				?>
 			</div>
 			<div class="col-sm-2 mb-1">
@@ -80,15 +111,15 @@ require_once('./include/navbar.php');
 				<br>
 				<?php 
 					if ($row["Estudio"]==1) {
-						echo '<span class="badge bg-success text-white">Si</span>'. "\n";
+						echo '<span class="badge badge-primary">Si</span>'. "\n";
 					} else 
-						echo '<span class="badge bg-danger text-white">No</span>'. "\n";
+						echo '<span class="badge badge-primary">No</span>'. "\n";
 				?>
 			</div>
 			<div class="col-sm-3 mb-2">
 				<span><small><strong>Curso</strong></small></span>
 				<br>
-                <?php echo utf8_encode($row["Curso"]). "\n"; ?>
+                <?php echo $row["Curso"]. "\n"; ?>
 			</div>
 		</div>
         <?php

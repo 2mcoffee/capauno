@@ -41,7 +41,31 @@
 						<a class="dropdown-item" href="./stats.php"><i class="bi bi-graph-up"></i> Estadísticas</a>-->
 					</div>
 				</li>
-				<li class="nav-item">
+				<!--<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					<i class="bi bi-cloud-download"></i> Descargas
+					</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+						<a class="dropdown-item" href="#"><i class="bi bi-file-earmark-arrow-down-fill"></i> Oficios y Técnica</a>
+						<div class="dropdown-divider"></div>
+						<a class="dropdown-item" href="#"><i class="bi bi-file-earmark-arrow-down-fill"></i> Qunita</a>
+					</div>
+				</li>-->
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					<i class="bi bi-cpu"></i> Sistema
+					</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+						<a class="dropdown-item" href="./inbox.php?id=<?php echo $login_id; ?>"><i class="bi bi-chat-text-fill"></i> Mensajes</a>
+						<div class="dropdown-divider"></div>
+						<a class="dropdown-item" href="https://api.whatsapp.com/send?phone=5492212215419" target="_blank"><i class="bi bi-life-preserver"></i> Ayuda</a>
+						<div class="dropdown-divider"></div>
+						<a class="dropdown-item" href="#" data-toggle="modal" data-target="#settingsModal"><i class="bi bi-gear-fill"></i> Ajustes</a>
+						<div class="dropdown-divider"></div>
+						<a class="dropdown-item" href="./logout.php"><i class="bi bi-arrow-right-square-fill"></i> Salir</a>
+					</div>
+				</li>
+				<!--<li class="nav-item">
 					<a class="nav-link" href="#" data-toggle="modal" data-target="#settingsModal"><i class="bi bi-gear"></i> Ajustes</a>
 				</li>
 				<li class="nav-item">
@@ -49,11 +73,21 @@
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" href="./logout.php"><i class="bi bi-arrow-right-square"></i> Salir</a>
+				</li>-->
+			</ul>
+			<ul class="navbar-nav ml-auto mr-4">
+				<li class="nav-item dropdown">
+					<a href="#" class="btn btn-sm btn-primary dropdown-toggle" data-toggle="dropdown">
+						<span class="badge badge-pill badge-danger count"></span> <i class="bi bi-bell-fill"></i>
+					</a>
+					<div class="dropdown-menu dropdown-menu2 dropdown-menu-right">
+					</div>
 				</li>
 			</ul>
-			<div class="my-2 my-lg-0">
-				<span class="p-2 alert-primary  rounded"><i class="bi bi-person-circle"></i> <?php echo $login_user ?></span>
-			</div>
+			<script src="./js/notifications.js"></script>
+			<!--<div class="my-2 my-lg-0">
+				<span class="p-2 alert-primary  rounded"><i class="bi bi-person-circle"></i> <?php //echo $login_user ?></span>
+			</div>-->
 		</div>
 		<?php
 			};
@@ -61,3 +95,4 @@
 	</nav>
     <div class="p-4"></div>
     
+

@@ -4,8 +4,8 @@ require_once('./include/header.php');
 require_once('./include/navbar.php');
 ?>
 	<div class="container">
-		<div class="w-100 shadow p-3 mb-5 bg-body rounded">
-			<div><strong>Búsqueda de Perfiles</strong></div>
+		<div class="w-100 shadow-sm p-3 mb-5 bg-body rounded">
+			<div><div class="icon-holder"><i class="bi bi-people-fill text-primary"></i></div> <strong>Búsqueda de Perfiles</strong></div>
 			<div class="p-2"></div>
 			<div class="row">
 				<div class="col-sm-12">
@@ -44,14 +44,13 @@ require_once('./include/navbar.php');
 			</div>
 		</div>
 		<div class="table-responsive-sm mb-4" id="FilterTable">
-			<table class="table table-sm table-hover table-striped">
-				<thead>
+			<table class="table table-borderless table-hover">
+				<thead class="border-left border-primary border-4 shadow-sm">
 					<tr>
 						<th scope="col">#</th>
 						<th scope="col">Interno</th>
 						<th scope="col">Ficha</th>
 						<th scope="col">Ubicación</th>
-						<!--<th scope="col">Estado</th>-->
 						<th scope="col">Acciones</th>
 					</tr>
 				</thead>
@@ -68,13 +67,6 @@ require_once('./include/navbar.php');
 					echo '						<td>' . $row["Nombre"]. '</td>' . "\n";
 					echo '						<td>' . $row["Ficha"]. '</td>' . "\n";
 					echo '						<td>' . $row["Pabellon"]. '</td>' . "\n";
-					//echo '						<td>' . "\n";
-					//if ($row["Active"] == 1) {
-					//	echo '						<span class="badge bg-success text-white">Activo</span>'. "\n";
-					//} else {
-					//	echo '						<span class="badge bg-danger text-white">Baja</span>'. "\n";
-					//}
-					//echo '						</td>' . "\n";
 					echo '						<td>' . "\n";
 					if ($row["Ficha"] != NULL) {
 						echo '						<a href="./profile.php?ficha='.$row["Ficha"].'&nombre='.$row["Nombre"].'&referencia=0" class="btn btn-sm btn-outline-primary" data-tooltip="tooltip" data-placement="bottom" title="Ficha">' . "\n";

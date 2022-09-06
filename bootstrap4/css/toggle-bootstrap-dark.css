@@ -5111,7 +5111,7 @@ body.bootstrap-dark {
   background-color: #bd2130 !important; }
 
 .bootstrap-dark .bg-light, .bootstrap-dark .bg-themed-inverted {
-  background-color: #f8f9fa !important; }
+  background-color: #343A40 !important; }
 
 .bootstrap-dark a.bg-light:hover, .bootstrap-dark a.bg-themed-inverted:hover, .bootstrap-dark a.bg-light:focus, .bootstrap-dark a.bg-themed-inverted:focus,
 .bootstrap-dark button.bg-light:hover,

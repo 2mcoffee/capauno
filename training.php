@@ -19,15 +19,46 @@ require_once('./include/navbar.php');
             ?>
             <a class="btn btn-outline-dark d-print-none" href="#" onclick="print()" data-tooltip="tooltip" data-placement="top" title="Imprimir"><i class="bi bi-printer"></i></a>
         </div>
-        <div class="alert alert-primary mb-4" role="alert">
-            <i class="bi bi-info-circle"></i> <strong>Información:</strong> Los datos visualizados pertenecen al interno <?php echo $row["Nombre"]. "\n"; ?>
-        </div>
+		<div class="row mb-4">
+			<div class="col-12 col-sm-3">
+				<div class="shadow-sm rounded border-0 p-2 h-120">
+					<div class="text-center text-primary"><h1 class="mb-0"><i class="bi bi-people"></i></h1></div>
+					<p class="card-text text-center small"><?php echo $row["Nombre"]. "\n"; ?></p>
+				</div>
+			</div>
+			<div class="col-4 col-sm-3">
+				<div class="shadow-sm rounded border-0 p-2 h-120">
+					<div class="text-center text-primary"><h1 class="mb-0"><i class="bi bi-person-rolodex"></i></h1></div>
+					<p class="card-text text-center small">Ficha: <?php echo $row["Ficha"]. "\n"; ?></p>
+				</div>
+			</div>
+			<div class="col-4 col-sm-3">
+				<div class="shadow-sm rounded border-0 p-2 h-120">
+					<div class="text-center text-primary"><h1 class="mb-0"><i class="bi bi-calendar-event"></i></h1></div>
+					<p class="card-text text-center small">
+						<?php 
+							if(is_null($row["Ingreso"])) {
+								echo 'Ingreso:'. "\n";
+							} else {
+								echo 'Ingreso: '.date("d/m/y",strtotime($row["Ingreso"])). "\n"; 
+							}
+						?>
+					</p>
+				</div>
+			</div>
+			<div class="col-4 col-sm-3">
+				<div class="shadow-sm rounded border-0 p-2 h-120">
+					<div class="text-center text-primary"><h1 class="mb-0"><i class="bi bi-building"></i></h1></div>
+					<p class="card-text text-center small"><?php echo 'Origen: '.$row["Origen"]. "\n"; ?></p>
+				</div>
+			</div>
+		</div>
         <?php
             }
 
             while($row = mysqli_fetch_array($training_results)) {
         ?> 
-        <h5 class="text-secondary text-justify-center">Curso N°<?php echo $i; $i++; ?></h5> 
+		<div class="border-left border-primary border-4 rounded shadow-sm mb-2 p-2"><h5 class="font-weight-light"> <div class="icon-holder"> <i class="bi bi-clipboard2-data-fill text-primary"></i></div> Curso N°<?php echo $i; $i++; ?></h5></div>		
         <div class="row mb-2">
 			<div class="col-sm-3 mb-1">
 				<span><small><strong>Capacitación</strong></small></span>
@@ -55,7 +86,7 @@ require_once('./include/navbar.php');
 				<?php echo $row["Entidad"]. "\n"; ?>
 			</div>
 		</div>
-        <div class="row mb-2">
+        <div class="row mb-4">
 			<div class="col-sm-3 mb-1">
 				<span><small><strong>Desde</strong></small></span>
 				<br>
@@ -82,11 +113,16 @@ require_once('./include/navbar.php');
 				<br>
 				<?php
 					if ($row["Estado"] == 'NO') {
-						echo '<span class="badge bg-danger text-white">ABANDONADO</span>'. "\n";
+						echo '<span class="badge badge-primary">Abandonado <i class="bi bi-x"></i></span>'. "\n";
 					} elseif ($row["Estado"] == 'SI') {
-						echo '<span class="badge bg-success text-white">FINALIZADO</span>'. "\n";
-					} else {
-						echo '<span class="badge bg-warning text-white">'.$row["Estado"].'</span>'. "\n";
+						echo '<span class="badge badge-primary">Finalizado <i class="bi bi-check"></i></span>'. "\n";
+					} elseif ($row["Estado"] == 'EN CURSO') {
+						echo '<span class="badge badge-primary">Cursando <i class="bi bi-easel"></i></span>'. "\n";
+					} elseif ($row["Estado"] == '') {
+						echo ''. "\n";
+					}
+					else {
+						echo '<span class="badge badge-primary">'.$row["Estado"].' <i class="bi bi-exclamation"></i></span>'. "\n";
 					}
                 ?>
 			</div>
@@ -98,7 +134,6 @@ require_once('./include/navbar.php');
                 ?>
 			</div>
 		</div>     
-        <hr>
         <?php
             }
         ?>

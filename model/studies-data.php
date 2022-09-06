@@ -73,7 +73,9 @@
 	
     $user_sql = "SELECT 
         e.Nombre,
-        u.Ficha
+        u.Ficha,
+		u.Ingreso,
+		u.Origen
         FROM cu_intra_busquedaestudios e
         LEFT JOIN cu_intra_internos u
         ON e.Nombre = u.Nombre

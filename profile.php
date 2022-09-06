@@ -33,10 +33,7 @@ require_once('./include/navbar.php');
 			?>
 			<a class="btn btn-outline-dark d-print-none" href="#" onclick="print()" data-tooltip="tooltip" data-placement="top" title="Imprimir"><i class="bi bi-printer"></i></a>
         </div>
-        <div class="alert alert-primary mb-4" role="alert">
-            <i class="bi bi-info-circle"></i> <strong>Información:</strong> Los datos visualizados pertenecen al interno <?php echo $row["interno"]. "\n"; ?>
-        </div>
-		<h5 class="text-secondary">Datos Personales</h5>
+		<div class="border-left border-primary border-4 rounded shadow-sm mb-2 p-2"><h5 class="font-weight-light"> <div class="icon-holder"><i class="bi bi-person-fill text-primary"></i></div> Datos personales</h5></div>
 		<div class="row mb-2">
 			<div class="col-sm-3 mb-1">
 				<span><small><strong>Ficha</strong></small></span>
@@ -81,13 +78,13 @@ require_once('./include/navbar.php');
 				<?php echo $row["oficio"]. "\n"; ?>
 			</div>
 		</div>
-		<div class="row mb-2">
+		<div class="row mb-4">
 			<div class="col-sm-3 mb-1">
 				<span><small><strong>Estado U-1</strong></small></span>
 				<br>
 				<?php 
 				if ($row["activo"] == 1) {
-					echo '<span class="badge bg-success text-white">Activo</span>'. "\n";
+					echo '<span class="badge badge-primary">Activo <i class="bi bi-check"></i></span>'. "\n";
 				} else {
 					echo '<span class="badge bg-danger text-white">Baja</span>'. "\n";
 				}
@@ -100,9 +97,8 @@ require_once('./include/navbar.php');
 			<div class="col-sm-3 mb-1">
 			</div>
 		</div>
-		<hr>
-		<h5 class="text-secondary text-justify-center">Datos Servicio Penitenciario</h5>
-		<div class="row mb-2">
+		<div class="border-left border-primary border-4 rounded shadow-sm mb-2 p-2"><h5 class="font-weight-light"> <div class="icon-holder"><i class="bi bi-shield text-primary"></i></div> Servicio Penitenciario</h5></div>
+		<div class="row mb-4">
 			<div class="col-sm-3 mb-1">
 			    <span><small><strong>F. Ingreso</strong></small></span>
 				<br>
@@ -136,9 +132,8 @@ require_once('./include/navbar.php');
 				<?php echo $row["conducta"]. "\n"; ?>
 			</div>
 		</div>
-		<hr>
-		<h5 class="text-secondary text-justify-center">Datos Laborales</h5>
-		<div class="row mb-2">
+		<div class="border-left border-primary border-4 rounded shadow-sm mb-2 p-2"><h5 class="font-weight-light"> <div class="icon-holder"><i class="bi bi-wrench-adjustable text-primary"></i></div> Información laboral</h5></div>
+		<div class="row mb-4">
 			<div class="col-sm-3 mb-1">
 				<span><small><strong>Sector</strong></small></span>
 				<br>
@@ -150,8 +145,7 @@ require_once('./include/navbar.php');
 				<?php echo $row["puesto"]. "\n"; ?>
 			</div>
 		</div>
-		<hr>
-		<h5 class="text-secondary text-justify-center">Datos Judiciales</h5>
+		<div class="border-left border-primary border-4 rounded shadow-sm mb-2 p-2"><h5 class="font-weight-light"> <div class="icon-holder"><i class="bi bi-fingerprint text-primary"></i></div> Información judicial</h5></div>
 		<div class="row mb-2">
 			<div class="col-sm-3 mb-1">
 				<span><small><strong>Causa</strong></small></span>
@@ -161,7 +155,8 @@ require_once('./include/navbar.php');
 			<div class="col-sm-3 mb-1">
 				<span><small><strong>Caratula</strong></small></span>
 				<br>
-				<?php echo $row["Caratula"]. "\n"; ?>
+				<span id="show-data" style="display:none;"><?php echo $row["Caratula"]. "\n"; ?></span> <button class="btn btn-sm btn-outline-primary toggle-button" onclick="eye(this)" data-tooltip="tooltip" data-placement="top" title="Caratula"><i class="bi bi-eye"></i></button>
+				<script src="./js/eye.js"></script>
 			</div>
 		    <div class="col-sm-3 mb-1">
 				<span><small><strong>Juzgado</strong></small></span>
@@ -174,7 +169,7 @@ require_once('./include/navbar.php');
 				<?php echo $row["deptojudicial"]. "\n"; ?>
 			</div>
 		</div>
-		<div class="row mb-2">
+		<div class="row mb-4">
 		    <div class="col-sm-3 mb-1">
 				<span><small><strong>Situación</strong></small></span>
 				<br>

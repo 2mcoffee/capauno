@@ -19,43 +19,46 @@ require_once('./include/navbar.php');
             ?>
             <a class="btn btn-outline-dark d-print-none" href="#" onclick="print()" data-tooltip="tooltip" data-placement="top" title="Imprimir"><i class="bi bi-printer"></i></a>
         </div>
-        <div class="alert alert-primary mb-4" role="alert">
-            <i class="bi bi-info-circle"></i> <strong>Información:</strong> Los datos visualizados pertenecen al interno <?php echo $row["Nombre"]. "\n"; ?>
-        </div>
-        <div class="row mx-auto mb-4 border rounded">
-			<div class="col-sm-3 mb-1">
-				<span><small><strong>Interno</strong></small></span>
-				<br>
-				<?php echo $row["Nombre"]. "\n"; ?>
-		    </div>
-            <div class="col-sm-3 mb-1">
-				<span><small><strong>Ficha</strong></small></span>
-				<br>
-                <?php echo $row["Ficha"]. "\n"; ?>
+		<div class="row mb-4">
+			<div class="col-12 col-sm-3">
+				<div class="shadow-sm rounded border-0 p-2 h-120">
+					<div class="text-center text-primary"><h1 class="mb-0"><i class="bi bi-people"></i></h1></div>
+					<p class="card-text text-center small"><?php echo $row["Nombre"]. "\n"; ?></p>
+				</div>
 			</div>
-			<div class="col-sm-3 mb-1">
-				<span><small><strong>Fecha Ingreso</strong></small></span>
-				<br>
-				<?php 
-					if(is_null($row["Ingreso"])) {
-						echo ''. "\n";
-					} else {
-						echo date("d/m/Y",strtotime($row["Ingreso"])). "\n"; 
-					}
-				?>
+			<div class="col-4 col-sm-3">
+				<div class="shadow-sm rounded border-0 p-2 h-120">
+					<div class="text-center text-primary"><h1 class="mb-0"><i class="bi bi-person-rolodex"></i></h1></div>
+					<p class="card-text text-center small">Ficha: <?php echo $row["Ficha"]. "\n"; ?></p>
+				</div>
 			</div>
-			<div class="col-sm-3 mb-1">
-				<span><small><strong>Origen</strong></small></span>
-				<br>
-				<?php echo $row["Origen"]. "\n"; ?>
+			<div class="col-4 col-sm-3">
+				<div class="shadow-sm rounded border-0 p-2 h-120">
+					<div class="text-center text-primary"><h1 class="mb-0"><i class="bi bi-calendar-event"></i></h1></div>
+					<p class="card-text text-center small">
+						<?php 
+							if(is_null($row["Ingreso"])) {
+								echo 'Ingreso:'. "\n";
+							} else {
+								echo 'Ingreso: '.date("d/m/y",strtotime($row["Ingreso"])). "\n"; 
+							}
+						?>
+					</p>
+				</div>
+			</div>
+			<div class="col-4 col-sm-3">
+				<div class="shadow-sm rounded border-0 p-2 h-120">
+					<div class="text-center text-primary"><h1 class="mb-0"><i class="bi bi-building"></i></h1></div>
+					<p class="card-text text-center small"><?php echo 'Origen: '.$row["Origen"]. "\n"; ?></p>
+				</div>
 			</div>
 		</div>
 		<?php
             }
 		?>
 		<div class="table-responsive-sm mb-4">
-			<table class="table table-sm table-hover">
-				<thead>
+			<table class="table table-borderless table-hover">
+				<thead class="border-left border-primary border-4 shadow-sm">
 					<tr>
 						<th scope="col">Tipo</th>
 						<th scope="col">Fecha</th>
@@ -68,37 +71,14 @@ require_once('./include/navbar.php');
 				<tbody>
 			<?php
 				while($row = mysqli_fetch_array($job_results)) {
+					echo '					<tr>' . "\n";
 					if ($row["Alta"]==1) {
 						
-						if ($login_template == 1) {
-			
-							echo '					<tr class="bg-success">' . "\n";
-			
-						} else {
-			
-							echo '					<tr class="table-success">' . "\n";
-			
-						}
-
-					} else {
-						
-						if ($login_template == 1) {
-			
-							echo '					<tr class="bg-danger">' . "\n";
-			
-						} else {
-			
-							echo '					<tr class="table-danger">' . "\n";
-			
-						}
-					}
-					if ($row["Alta"]==1) {
-						
-						echo '						<td>Alta <i class="bi bi-arrow-up-short"></td>' . "\n";
+						echo '						<td>Alta <i class="bi bi-arrow-up-square-fill text-primary"></td>' . "\n";
 						
 					} else {
 						
-						echo '						<td>Baja <i class="bi bi-arrow-down-short"></td>' . "\n";
+						echo '						<td>Baja <i class="bi bi-arrow-down-square text-primary"></td>' . "\n";
 						
 					}
 					echo '						<td>' . date("d/m/Y",strtotime($row["Fecha"])). '</td>' . "\n";

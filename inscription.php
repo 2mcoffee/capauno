@@ -10,7 +10,7 @@ require_once('./include/navbar.php');
 			if ($alert == 1) {
 					echo '	<div class="w-100 mb-4">' . "\n";
 					echo '				<div class="alert alert-primary alert-dismissible fade show" role="alert">' . "\n";
-					echo '					<strong>¡Wow!</strong> Actualmente hay <strong>'.$total_rows.'</strong> internos registrados para cursar durante el ciclo lectivo 2022.' . "\n";
+					echo '					Actualmente hay <strong>'.$total_rows.'</strong> internos registrados para cursar durante el ciclo lectivo.' . "\n";
 					echo '					<button type="button" class="close" data-dismiss="alert" aria-label="Close">' . "\n";
 					echo '						<span aria-hidden="true">&times;</span>' . "\n";
 					echo '					</button>' . "\n";
@@ -19,8 +19,8 @@ require_once('./include/navbar.php');
 				}
 
 		?>
-		<div class="w-100 shadow p-3 mb-5 bg-body rounded">
-			<div><strong>Búsqueda de Internos</strong></div>
+		<div class="w-100 shadow-sm p-3 mb-5 bg-body rounded">
+			<div><div class="icon-holder"><i class="bi bi-pc-display text-primary"></i></div> <strong>Búsqueda de Inscriptos</strong></div>
 			<div class="p-2"></div>
 			<div class="row">
 				<div class="col-sm-12">
@@ -59,8 +59,8 @@ require_once('./include/navbar.php');
 			</div>
 		</div>
 		<div class="table-responsive-sm mb-4" id="FilterTable">
-			<table class="table table-sm table-striped">
-				<thead>
+			<table class="table table-borderless table-hover">
+				<thead class="border-left border-primary border-4 shadow-sm">
 					<tr>
 						<th scope="col">#</th>
 						<th scope="col">Interno</th>
@@ -80,15 +80,15 @@ require_once('./include/navbar.php');
 					$i++;
 					echo '						<td>' . "\n";
 					if ($row["Recomendado"]==1) {
-						echo '							'.utf8_encode($row["Nombre"]). ' <span><i class="bi bi-patch-check-fill text-cyan"></i></span>' . "\n";
+						echo '							'.$row["Nombre"]. ' <span><i class="bi bi-patch-check-fill text-cyan"></i></span>' . "\n";
 					} else {
-						echo '							'.utf8_encode($row["Nombre"]). "\n";
+						echo '							'.$row["Nombre"]. "\n";
 					}
 					echo '						</td>' . "\n";
-					echo '						<td>' . utf8_encode($row["Curso"]). '</td>' . "\n";
+					echo '						<td>' . $row["Curso"]. '</td>' . "\n";
 					echo '						<td>' . "\n";
 					if ($row["Ficha"] != NULL) {
-						echo '						<a href="./profile.php?ficha='.utf8_encode($row["Ficha"]).'&nombre='.utf8_encode($row["Nombre"]).'&referencia=2" class="btn btn-sm btn-outline-primary" data-tooltip="tooltip" data-placement="bottom" title="Ficha">' . "\n";
+						echo '						<a href="./profile.php?ficha='.$row["Ficha"].'&nombre='.$row["Nombre"].'&referencia=2" class="btn btn-sm btn-outline-primary" data-tooltip="tooltip" data-placement="bottom" title="Ficha">' . "\n";
 						echo '							<i class="bi bi-person"></i>' . "\n";
 						echo '						</a>' . "\n";
 					} else {
@@ -96,7 +96,7 @@ require_once('./include/navbar.php');
 						echo '							<i class="bi bi-person"></i>' . "\n";
 						echo '						</a> ' . "\n";
 					}
-						echo '							<a class="btn btn-sm btn-outline-info" href="./registration.php?id='.$row["Id"].'" data-tooltip="tooltip" data-placement="bottom" title="Inscripcion">' . "\n";
+						echo '							<a class="btn btn-sm btn-outline-primary" href="./registration.php?id='.$row["Id"].'" data-tooltip="tooltip" data-placement="bottom" title="Inscripcion">' . "\n";
 						echo '								<i class="bi bi-clipboard-check"></i>' . "\n";
 						echo '							</a>' . "\n";
 					echo '						</td>' . "\n";

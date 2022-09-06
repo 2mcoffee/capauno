@@ -19,17 +19,47 @@ require_once('./include/navbar.php');
             ?>
             <a class="btn btn-outline-dark d-print-none" href="#" onclick="print()" data-tooltip="tooltip" data-placement="top" title="Imprimir"><i class="bi bi-printer"></i></a>
         </div>
-        <div class="alert alert-primary mb-4" role="alert">
-            <i class="bi bi-info-circle"></i> <strong>Información:</strong> Los datos visualizados pertenecen al interno <?php echo $row["Nombre"]. "\n"; ?>
-        </div>
+		<div class="row mb-4">
+			<div class="col-12 col-sm-3">
+				<div class="shadow-sm rounded border-0 p-2 h-120">
+					<div class="text-center text-primary"><h1 class="mb-0"><i class="bi bi-people"></i></h1></div>
+					<p class="card-text text-center small"><?php echo $row["Nombre"]. "\n"; ?></p>
+				</div>
+			</div>
+			<div class="col-4 col-sm-3">
+				<div class="shadow-sm rounded border-0 p-2 h-120">
+					<div class="text-center text-primary"><h1 class="mb-0"><i class="bi bi-person-rolodex"></i></h1></div>
+					<p class="card-text text-center small">Ficha: <?php echo $row["Ficha"]. "\n"; ?></p>
+				</div>
+			</div>
+			<div class="col-4 col-sm-3">
+				<div class="shadow-sm rounded border-0 p-2 h-120">
+					<div class="text-center text-primary"><h1 class="mb-0"><i class="bi bi-calendar-event"></i></h1></div>
+					<p class="card-text text-center small">
+						<?php 
+							if(is_null($row["Ingreso"])) {
+								echo 'Ingreso:'. "\n";
+							} else {
+								echo 'Ingreso: '.date("d/m/y",strtotime($row["Ingreso"])). "\n"; 
+							}
+						?>
+					</p>
+				</div>
+			</div>
+			<div class="col-4 col-sm-3">
+				<div class="shadow-sm rounded border-0 p-2 h-120">
+					<div class="text-center text-primary"><h1 class="mb-0"><i class="bi bi-building"></i></h1></div>
+					<p class="card-text text-center small"><?php echo 'Origen: '.$row["Origen"]. "\n"; ?></p>
+				</div>
+			</div>
+		</div>
 		<?php
             }
         ?>
-		<br>
 		<div class="mb-4">
-			<h4>Educación Primaria:</h4>		
+			<div class="border-left border-primary border-4 rounded shadow-sm mb-4 p-2"><h5 class="font-weight-light"> <div class="icon-holder"><i class="bi bi-mortarboard-fill text-primary"></i></div> Educación Primaria</h5></div>		
 			<div class="table-responsive-sm mb-4">
-				<table class="table table-sm table-hover">
+				<table class="table table-hover table-borderless">
 					<thead>
 						<tr>
 							<th scope="col">Nivel</th>
@@ -54,11 +84,11 @@ require_once('./include/navbar.php');
 						echo '						<td>' . $row["Motivo"]. '</td>' . "\n";
 						if ($row["Activo"] == 1) {
 						
-							echo '						<td><span class="badge badge-pill badge-success">Activo</span></td>' . "\n";
+							echo '						<td><span class="badge badge-primary">Activo <i class="bi bi-check"></i></span></td>' . "\n";
 							
 						} else {
 							
-							echo '						<td><span class="badge badge-pill badge-danger">Baja</span></td>' . "\n";
+							echo '						<td><span class="badge badge-primary">Baja <i class="bi bi-x"></i></span></td>' . "\n";
 							
 						}
 						echo '					</tr>' . "\n";
@@ -69,11 +99,10 @@ require_once('./include/navbar.php');
 				</table>
 			</div>
 		</div>
-		<br>
 		<div class="mb-4">
-			<h4>Educación Secundaria:</h4>		
+			<div class="border-left border-primary border-4 rounded shadow-sm mb-2 p-2"><h5 class="font-weight-light"> <div class="icon-holder"><i class="bi bi-mortarboard-fill text-primary"></i></div> Educación Secundaria</h5></div>		
 			<div class="table-responsive-sm mb-4">
-				<table class="table table-sm table-hover">
+				<table class="table table-hover table-borderless">
 					<thead>
 						<tr>
 							<th scope="col">Nivel</th>
@@ -98,11 +127,11 @@ require_once('./include/navbar.php');
 						echo '						<td>' . $row["Motivo"]. '</td>' . "\n";
 						if ($row["Activo"] == 1) {
 						
-							echo '						<td><span class="badge badge-pill badge-success">Activo</span></td>' . "\n";
+							echo '						<td><span class="badge badge-primary">Activo <i class="bi bi-check"></i></span></td>' . "\n";
 							
 						} else {
 							
-							echo '						<td><span class="badge badge-pill badge-danger">Baja</span></td>' . "\n";
+							echo '						<td><span class="badge badge-primary">Baja <i class="bi bi-x"></i></span></td>' . "\n";
 							
 						}
 						echo '					</tr>' . "\n";
@@ -113,11 +142,10 @@ require_once('./include/navbar.php');
 				</table>
 			</div>
 		</div>
-		<br>
 		<div class="mb-4">
-			<h4>Educación Terciaria:</h4>		
+			<div class="border-left border-primary border-4 rounded shadow-sm mb-2 p-2"><h5 class="font-weight-light"> <div class="icon-holder"><i class="bi bi-mortarboard-fill text-primary"></i></div> Educación Terciaria</h5></div>		
 			<div class="table-responsive-sm mb-4">
-				<table class="table table-sm table-hover">
+				<table class="table table-hover table-borderless">
 					<thead>
 						<tr>
 							<th scope="col">Nivel</th>
@@ -146,11 +174,11 @@ require_once('./include/navbar.php');
 						echo '						<td>' . $row["Motivo"]. '</td>' . "\n";
 						if ($row["Activo"] == 1) {
 						
-							echo '						<td><span class="badge badge-pill badge-success">Activo</span></td>' . "\n";
+							echo '						<td><span class="badge badge-primary">Activo <i class="bi bi-check"></i></span></td>' . "\n";
 							
 						} else {
 							
-							echo '						<td><span class="badge badge-pill badge-danger">Baja</span></td>' . "\n";
+							echo '						<td><span class="badge badge-primary">Baja <i class="bi bi-x"></i></span></td>' . "\n";
 							
 						}
 						echo '					</tr>' . "\n";
@@ -161,11 +189,10 @@ require_once('./include/navbar.php');
 				</table>
 			</div>
 		</div>
-		<br>
 		<div class="mb-4">
-			<h4>Educación Universitaria:</h4>		
+			<div class="border-left border-primary border-4 rounded shadow-sm mb-2 p-2"><h5 class="font-weight-light"> <div class="icon-holder"><i class="bi bi-mortarboard-fill text-primary"></i></div> Educación Universitaria</h5></div>		
 			<div class="table-responsive-sm mb-4">
-				<table class="table table-sm table-hover">
+				<table class="table table-hover table-borderless">
 					<thead>
 						<tr>
 							<th scope="col">Nivel</th>
@@ -183,16 +210,21 @@ require_once('./include/navbar.php');
 						echo '					</tr>' . "\n";
 						echo '						<td>' . $row["Nivel"]. '</td>' . "\n";
 						echo '						<td>' . $row["Carrera"]. '</td>' . "\n";
-						echo '						<td>' . date("d/m/Y",strtotime($row["Inicio"])). '</td>' . "\n";
+						if(is_null($row["Inicio"])) {
+							echo '						<td>' . $row["Inicio"]. '</td>' . "\n";
+						}
+						else {
+							echo '						<td>' . date("d/m/Y",strtotime($row["Inicio"])). '</td>' . "\n";
+						}
 						echo '						<td>' . $row["Fin"]. '</td>' . "\n";
 						echo '						<td>' . $row["Motivo"]. '</td>' . "\n";
 						if ($row["Activo"] == 1) {
 						
-							echo '						<td><span class="badge badge-pill badge-success">Activo</span></td>' . "\n";
+							echo '						<td><span class="badge badge-primary">Activo <i class="bi bi-check"></i></span></td>' . "\n";
 							
 						} else {
 							
-							echo '						<td><span class="badge badge-pill badge-danger">Baja</span></td>' . "\n";
+							echo '						<td><span class="badge badge-primary">Baja <i class="bi bi-x"></i></span></td>' . "\n";
 							
 						}
 						echo '					</tr>' . "\n";
